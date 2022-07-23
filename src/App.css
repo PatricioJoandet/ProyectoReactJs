@@ -131,3 +131,13 @@ h2{
     background-color: #DCED31;
     cursor: pointer;
 }
+
+.itemCounter{
+    display: flex;
+    justify-content: center;
+}
+
+.itemCounter button{
+    width: 50px;
+    margin: 5px 10px 5px 10px;
+}
