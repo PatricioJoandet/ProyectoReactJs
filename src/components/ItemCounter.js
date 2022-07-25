@@ -4,23 +4,23 @@ import '../App.css'
 const ItemCounter = ({stock}) =>{
     
     const stockAv = stock
-    let disabled = false
 
     const [QtyCounter, setQtyCounter] = useState(1)
     
+
     const addProduct = () =>{
-        QtyCounter<stockAv ? setQtyCounter(QtyCounter + 1) : disabled= true
+        QtyCounter<stockAv ? setQtyCounter(QtyCounter + 1) : setQtyCounter(stock)
     }
 
     const subProduct = () =>{
-       QtyCounter>1 ? setQtyCounter(QtyCounter - 1) : disabled= true
-    }
+       QtyCounter>1 ? setQtyCounter(QtyCounter - 1) : setQtyCounter(1)
+     }
 
     return(
         <div className="itemCounter">
-            <button onClick={subProduct} disabled={disabled}>-</button>
+            <button onClick={subProduct}>-</button>
             <p>{QtyCounter}</p>
-            <button onClick={addProduct} disabled={disabled}>+</button>
+            <button onClick={addProduct}>+</button>
         </div>
     )
 }
