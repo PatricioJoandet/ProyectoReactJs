@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/ProyectoReactJs/static/css/main.ea257d18.css",
-    "main.js": "/ProyectoReactJs/static/js/main.d65ab248.js",
+    "main.css": "/ProyectoReactJs/static/css/main.d5ad0f49.css",
+    "main.js": "/ProyectoReactJs/static/js/main.26a5a604.js",
     "static/js/787.739f13b5.chunk.js": "/ProyectoReactJs/static/js/787.739f13b5.chunk.js",
     "static/media/sublime.png": "/ProyectoReactJs/static/media/sublime.724dbed2237a3f99328f.png",
     "static/media/runaways.png": "/ProyectoReactJs/static/media/runaways.ee63efdf7b2fa448b24c.png",
@@ -10,12 +10,12 @@
     "static/media/logo.png": "/ProyectoReactJs/static/media/logo.20653cb732bd5fc09345.png",
     "static/media/carrito.svg": "/ProyectoReactJs/static/media/carrito.27ffcd49ca8afaba319d03e5758b8670.svg",
     "index.html": "/ProyectoReactJs/index.html",
-    "main.ea257d18.css.map": "/ProyectoReactJs/static/css/main.ea257d18.css.map",
-    "main.d65ab248.js.map": "/ProyectoReactJs/static/js/main.d65ab248.js.map",
+    "main.d5ad0f49.css.map": "/ProyectoReactJs/static/css/main.d5ad0f49.css.map",
+    "main.26a5a604.js.map": "/ProyectoReactJs/static/js/main.26a5a604.js.map",
     "787.739f13b5.chunk.js.map": "/ProyectoReactJs/static/js/787.739f13b5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ea257d18.css",
-    "static/js/main.d65ab248.js"
+    "static/css/main.d5ad0f49.css",
+    "static/js/main.26a5a604.js"
   ]
 }
