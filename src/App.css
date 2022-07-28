@@ -147,3 +147,46 @@ h2{
     width: 50px;
     margin: 5px 10px 5px 10px;
 }
+
+.itemDetailContainer{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.itemDetailImg{
+    width: 500px;
+    border: 3px solid red;
+    border-radius: 10px;
+}
+
+.itemDetailInfo{
+    border: solid 2px black;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+.itemDetailTitle{
+    margin-top: 10px;
+}
+
+.itemDetailPrice{
+    font-size: 1.5em;
+}
+
+.player iframe{
+    border-radius: 10px;
+    height: 200px;
+}
+
+.stockCount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
