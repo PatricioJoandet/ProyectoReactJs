@@ -95,6 +95,7 @@ h2{
     flex-direction: row;
     justify-content: center;
     width: auto;
+    flex-wrap: wrap;
 
 }
 
