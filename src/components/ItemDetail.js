@@ -4,7 +4,7 @@ import '../App.css'
 
 const ItemDetail = ({data}) =>{
 
-    const {title, cover_image, community, year} = data
+    const {title, year, community} = data
     data.price = Math.trunc((community.have - community.want)*.8+2000)
     data.stock = Math.trunc((community.have+community.want)/40)
 
@@ -14,7 +14,7 @@ const ItemDetail = ({data}) =>{
         <div className="itemDetailContainer">
             <div>
                 <div>
-                    <img className="itemDetailImg" src={cover_image} alt={`Portada de ${title}`}/>
+                    <img className="itemDetailImg" src={data.images[0].resource_url} alt={`Portada de ${title}`}/>
                 </div>
             </div>
             <div className="itemDetailInfo">
@@ -23,7 +23,7 @@ const ItemDetail = ({data}) =>{
                 </div>
                 <div className="itemExtraInfo">
                     <p>Año: {year}</p>
-                    <p>Categorias: {data.style.join(" - ")}</p>
+                    <p>Categorias:</p>
                     <p></p>
                 </div>
                 <div>

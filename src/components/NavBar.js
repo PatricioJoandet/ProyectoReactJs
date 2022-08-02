@@ -1,6 +1,8 @@
 import logo from '../img/logo.png'
 import '../App.css'
 import CartWidget from './CartWidget'
+import { Link } from 'react-router-dom'
+
 
 
 function NavBar() {
@@ -12,9 +14,9 @@ function NavBar() {
         </div>
         <div className='listaContainer'>
           <ul className='lista'>
-            <li><button>Home</button></li>
-            <li><button>Productos</button></li>
-            <li><button>FAQ</button></li>
+            <Link to="/"><li><button>Home</button></li></Link>
+            <Link to="/Productos"><li><button>Productos</button></li></Link>
+            <Link to="/"><li><button>FAQ</button></li></Link>
           </ul>
         </div>
         <CartWidget />
