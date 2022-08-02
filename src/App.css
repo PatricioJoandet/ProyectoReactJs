@@ -167,10 +167,12 @@ h2{
     width: 400px;
     height: 500px;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     text-align: center;
     justify-content: space-evenly;
+    box-sizing: border-box;
 }
 
 .itemDetailTitle{
