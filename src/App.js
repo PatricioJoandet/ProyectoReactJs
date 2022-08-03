@@ -3,6 +3,7 @@ import NavBar from './components/NavBar'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import ItemDetailContainer from './components/ItemDetailContainer';
+import ItemListContainer from './components/ItemListContainer';
 
 
 
@@ -13,8 +14,13 @@ function App() {
         <NavBar />
         <Routes>
           <Route path='/' element={<Home/>}/>
+          <Route path='/ProyectoReactJs/' element={<Home/>}/>
           <Route path='/productos/:id' element={<ItemDetailContainer/>}/>
-
+          <Route path='/rock' element={<ItemListContainer cat="rock"/>}/>
+          <Route path='/pop' element={<ItemListContainer cat="pop"/>}/>
+          <Route path='/blues' element={<ItemListContainer cat="blues"/>}/>
+          <Route path='/country' element={<ItemListContainer cat="country"/>}/>
+          <Route path='/electronic' element={<ItemListContainer cat="electronic"/>}/>
         </Routes>
       </div>
     </BrowserRouter>

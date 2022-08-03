@@ -14,7 +14,7 @@ function NavBar() {
         </div>
         <div className='listaContainer'>
           <ul className='lista'>
-            <Link to="/"><li><button>Home</button></li></Link>
+            <Link to="/ProyectoReactJs"><li><button>Home</button></li></Link>
             <Link to="/Productos"><li><button>Productos</button></li></Link>
             <Link to="/"><li><button>FAQ</button></li></Link>
           </ul>

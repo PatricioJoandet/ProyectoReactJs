@@ -13,7 +13,7 @@ const ItemDetailContainer = () =>{
         async function getData(){
             const key = "nwzFKjYuERHZuLUJfuVf"
             const secret = "EFbNzVTpAqxwxBaybfXLsLsYQthFsdYs"
-            let response = await fetch(`https://api.discogs.com/releases/${id}?key=${key}&secret=${secret}`)
+            let response = await fetch(`https://api.discogs.com/releases/${id}?&key=${key}&secret=${secret}`)
             let data = await response.json();
             setItemDet(data)
             setLoading(false)
