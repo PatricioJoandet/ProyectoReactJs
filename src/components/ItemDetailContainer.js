@@ -17,11 +17,10 @@ const ItemDetailContainer = () =>{
             let data = await response.json();
             setItemDet(data)
             setLoading(false)
-            console.log(id)
+            console.log(data)
         }
         getData()
       },[])
-      console.log(itemDet)
     if (isLoading){
         return <div> Loading ...</div>
     }

@@ -16,7 +16,6 @@ const ItemListContainer = ( {section} )=>{
       .then(res=>{
         res.json()
         .then(res=>setListProducts(res.results))
-        .then(console.log(listProducts))
       })
     }, 2000);
   },[])

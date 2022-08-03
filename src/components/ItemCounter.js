@@ -6,7 +6,11 @@ const ItemCounter = ({stock}) =>{
     const stockAv = stock
 
     const [QtyCounter, setQtyCounter] = useState(1)
-    
+    if(stockAv=== 0){
+        return(
+            <p>Sin stock</p>
+        )
+    }
 
     const addProduct = () =>{
         QtyCounter<stockAv ? setQtyCounter(QtyCounter + 1) : setQtyCounter(stock)
