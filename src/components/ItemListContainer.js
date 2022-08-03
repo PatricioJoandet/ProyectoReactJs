@@ -17,7 +17,7 @@ const ItemListContainer = ( {section} )=>{
         res.json()
         .then(res=>setListProducts(res.results))
       })
-    }, 2000);
+    }, 500);
   },[])
 
   

@@ -17,7 +17,6 @@ const ItemDetailContainer = () =>{
             let data = await response.json();
             setItemDet(data)
             setLoading(false)
-            console.log(data)
         }
         getData()
       },[])

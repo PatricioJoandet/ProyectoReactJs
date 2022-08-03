@@ -7,7 +7,7 @@ const ItemDetail = ({data}) =>{
     const {title, year, community, genres} = data
     data.price = Math.trunc((community.have - community.want)*.8+2000)
     let stock = data.num_for_sale
-
+    console.log(data)
     return(
         <div className="itemDetailContainer">
             <div>
