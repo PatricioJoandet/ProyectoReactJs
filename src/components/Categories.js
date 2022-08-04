@@ -5,12 +5,14 @@ const Categories =() => {
 
 
     return(
-        <div>
-            <Link to="/categories/rock"> Rock </Link>
-            <Link to="/categories/pop"> Pop </Link>
-            <Link to="/categories/blues"> Blues </Link>
-            <Link to="/categories/country"> Country </Link>
-            <Link to="/categories/electronic"> Electronic</Link>
+        <div className='categoriesContainer'>
+            <Link to="/category/rock"> <button className='categoryBtn'> Rock </button> </Link>
+            <Link to="/category/pop"> <button className='categoryBtn'> Pop </button></Link>
+            <Link to="/category/blues"> <button className='categoryBtn'> Blues </button></Link>
+            <Link to="/category/country"> <button className='categoryBtn'> Country </button></Link>
+            <Link to="/category/electronic"> <button className='categoryBtn'> Electronic </button></Link>
+            <Link to="/category/jazz"> <button className='categoryBtn'> Jazz </button> </Link>
+            <Link to="/category/reggae"> <button className='categoryBtn'> Reggae </button></Link>
         </div>
     )
 }

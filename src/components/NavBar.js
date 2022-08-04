@@ -17,8 +17,6 @@ function NavBar() {
         <div className='listaContainer'>
           <ul className='lista'>
             <Link to="/ProyectoReactJs"><li><button>Home</button></li></Link>
-            <Link to="/Productos"><li><button>Productos</button></li></Link>
-            <Link to="/categories"><li><button>Categorias</button></li></Link>
           </ul>
         </div>
         <CartWidget />
