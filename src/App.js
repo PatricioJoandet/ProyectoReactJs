@@ -14,7 +14,7 @@ function App() {
         <NavBar />
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/ProyectoReactJs' element={<Home/>}/>
+          <Route path='/ProyectoReactJs/' element={<Home/>}/>
           <Route path='/productos/:id' element={<ItemDetailContainer/>}/>
           <Route path='/category/:cat' element={<ItemListContainer/>} />
         </Routes>
