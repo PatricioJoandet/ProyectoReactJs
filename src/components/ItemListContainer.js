@@ -11,7 +11,7 @@ const ItemListContainer = ()=>{
   const [isLoading, setLoading] = useState(true)
   const key = "nwzFKjYuERHZuLUJfuVf"
   const secret = "EFbNzVTpAqxwxBaybfXLsLsYQthFsdYs"
-  console.log(cat)
+  
 useEffect(() => {
     setLoading(true)
     async function getData(){

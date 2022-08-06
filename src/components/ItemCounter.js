@@ -1,7 +1,7 @@
 import { useState } from "react";
 import '../App.css'
 
-const ItemCounter = ({stock}) =>{
+const ItemCounter = ({stock, setQtySelected}) =>{
     
     const stockAv = stock
 
@@ -20,11 +20,19 @@ const ItemCounter = ({stock}) =>{
        QtyCounter>1 ? setQtyCounter(QtyCounter - 1) : setQtyCounter(1)
      }
 
+
+    const onAdd = () => {
+        setQtySelected(QtyCounter)
+    }
+
     return(
-        <div className="itemCounter">
-            <button onClick={subProduct}>-</button>
-            <p>{QtyCounter}</p>
-            <button onClick={addProduct}>+</button>
+        <div>
+            <div className="itemCounter">
+                <button onClick={subProduct}>-</button>
+                <span>{QtyCounter}</span>
+                <button onClick={addProduct}>+</button>
+            </div>
+            <button onClick={onAdd}>Agregar al carrito</button>
         </div>
     )
 }

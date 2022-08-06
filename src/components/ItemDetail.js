@@ -1,5 +1,7 @@
 import ItemCounter from "./ItemCounter"
 import '../App.css'
+import { useState } from 'react'
+import { Link } from "react-router-dom"
 
 
 const ItemDetail = ({data}) =>{
@@ -7,7 +9,9 @@ const ItemDetail = ({data}) =>{
     const {title, year, community, genres} = data
     data.price = Math.trunc((community.have - community.want)*.8+2000)
     let stock = data.num_for_sale
-    console.log(data)
+    const [qtySelected, setQtySelected] = useState(0)
+
+    console.log(qtySelected)
     return(
         <div className="itemDetailContainer">
             <div>
@@ -33,8 +37,7 @@ const ItemDetail = ({data}) =>{
                     <p className="itemDetailPrice">${data.price}</p>
                     <div className="stockCount">
                         <p>Stock: {stock}</p>
-                        <ItemCounter stock={stock}/>
-                        <button>Agregar al carrito</button>
+                        {qtySelected > 0 ? <Link to='/cart'><button>Terminar Compra</button> </Link>: <ItemCounter setQtySelected={setQtySelected} stock={stock}/>}
                     </div>
                 </div>
             </div>
