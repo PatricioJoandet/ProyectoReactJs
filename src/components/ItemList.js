@@ -1,6 +1,7 @@
 import Item from './Item'
 
 const ItemList = ({dataProducts}) =>{
+
     return(
         <div className='itemContainer'>
             {dataProducts.map((product) =>{

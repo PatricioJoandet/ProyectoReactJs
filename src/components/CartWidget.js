@@ -1,11 +1,15 @@
 import carrito from '../img/carrito.svg'
 import '../App.css'
+import {CartContext} from '../contex/CartContext'
+import { useContext } from 'react'
 
 const CartWidget = () => {
+
+
   return(
-    <div className='carrito'>
+    <div>
       <img src={carrito} alt="carrito" />
-      <p>0</p>
+      <span>0</span>
     </div>
   )
 

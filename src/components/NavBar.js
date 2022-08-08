@@ -17,7 +17,11 @@ function NavBar() {
             <Link to="/"><li><button>Home</button></li></Link>
           </ul>
         </div>
-        <CartWidget />
+        <div className='carrito'>
+          <Link to={'/cart/'}>
+            <CartWidget />
+          </Link>
+        </div>
     </nav>
   );
 }

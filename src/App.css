@@ -87,6 +87,10 @@ h2{
     -webkit-user-drag: none;
 }
 
+.carrito a{
+    text-decoration: none;
+}
+
 .itemListContainer{
     margin: 0 auto;
     margin-top: 30px;
