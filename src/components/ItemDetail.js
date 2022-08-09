@@ -8,6 +8,7 @@ const ItemDetail = ({data}) =>{
     const {title, year, community, genres} = data
     data.price = Math.trunc((community.have - community.want)*.8+2000)
     let stock = data.num_for_sale
+    
     const [qtySelected, setQtySelected] = useState(0)
 
     return(

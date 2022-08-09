@@ -7,8 +7,9 @@ const CartProvider = ({children}) =>{
 
   const [cart, setCart] = useState([])
   const [qty, setQty] = useState(0)
+  const [itemIndex, setItemIndex] = useState(0)
+
   const addToCart = (product) =>{
-    console.log(product)
     setCart([...cart, product])
   }
 
@@ -20,9 +21,10 @@ const CartProvider = ({children}) =>{
   const removeFromCart = (id) =>{
     const newCart = cart.filter((product) => product.id!==id)
     setCart(newCart)
+
   }
 
-  return <CartContext.Provider value={{addToCart, cart, clear, qty, setQty}}>
+  return <CartContext.Provider value={{addToCart, cart, clear, qty, setQty, removeFromCart}}>
 
     {children}
 

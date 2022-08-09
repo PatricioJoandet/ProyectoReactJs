@@ -246,7 +246,6 @@ h2{
 .categoryBtn:hover{
     cursor: pointer;
     background-color: #DCED31;
-
     animation: shake 0.5s infinite ;
 }
 @keyframes shake{
@@ -259,8 +258,6 @@ h2{
 
 .checkoutContainer{
     display: flex;
-
-
 }
 .checkoutTitle{
     text-align: center;
@@ -277,9 +274,38 @@ h2{
 }
 
 .checkoutContainer{
+    background-color: red;
+}
+ 
+.checkoutItem{
+    display: flex;
+    width: 100%;
+    background-color: red;
+}
+.checkoutItem button{
+    height: 50px;
+    align-self: center;
+}
+.pagination{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.pagination button{
+    margin: 0px 10px 0px 10px;
+    width: 50px;
+    height: 20px;
+    border-radius: 20px;
+    border: 1px black solid;
+}
+
+.pagination button:hover{
+    background-color: #DCED31 ;
+    transform: scale(1.1);
 
 }
 
-.a{
-    background-color: blue;
+.paginationPage{
+    font-weight: 600;
+    font-size: 1.2rem;
 }
