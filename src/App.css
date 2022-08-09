@@ -119,6 +119,9 @@ h2{
     padding: 10px 0px;
     width: 250px;
     transition: all ease 0.2s;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .singleItem:hover{
@@ -252,4 +255,31 @@ h2{
     50% { transform: rotate(0eg); }
     75% { transform: rotate(-5deg); }
     100% { transform: rotate(0deg); }
+}
+
+.checkoutContainer{
+    display: flex;
+
+
+}
+.checkoutTitle{
+    text-align: center;
+}
+
+.checkoutButtons{
+    display: flex;
+    justify-content: flex-start;
+    background-color: red;
+}
+
+.checkoutButtons button{
+    margin-left: 5px;
+}
+
+.checkoutContainer{
+
+}
+
+.a{
+    background-color: blue;
 }

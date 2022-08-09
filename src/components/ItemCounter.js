@@ -1,11 +1,13 @@
-import { useState, useContext } from "react";
+import { useState, useContext, createContext } from "react";
 import { CartContext } from "../contex/CartContext";
 import '../App.css'
 
 const ItemCounter = ({product, stock, setQtySelected}) =>{
     
     const stockAv = stock
-    const {addToCart} = useContext(CartContext)
+    const {addToCart, setQty, qty} = useContext(CartContext)
+
+    
 
     const [QtyCounter, setQtyCounter] = useState(1)
     if(stockAv=== 0){
@@ -26,6 +28,7 @@ const ItemCounter = ({product, stock, setQtySelected}) =>{
     const onAdd = () => {
         setQtySelected(QtyCounter)
         addToCart({...product, QtyCounter})
+        setQty(QtyCounter + qty)
     }
 
     return(
