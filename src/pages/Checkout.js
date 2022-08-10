@@ -20,10 +20,21 @@ const Checkout = () =>{
                     <div>
                         {cart.map(product=>
                             <div className='checkoutItem'>
-                                <Item data={product}/>
-                                    <button onClick={()=>removeFromCart(product.id)}>Borrar</button>
-                                    {console.log(product)}
-                                </div>)}
+															<div className='checkoutItemInfo'>
+																<div className='checkoutItemImg'>
+																	<img src={product.images[0].resource_url} />
+																</div>
+																<div>
+																	<h2>{product.title}</h2>
+																	<h3>{product.artists_sort}</h3>
+																	<span>{product.price}</span>
+																</div>
+															</div>
+															<div>
+																<button onClick={()=>removeFromCart(product.id)}>Borrar</button>
+															</div>
+                                    {console.log(product)}  
+                            </div>)}
                     </div>
                 </div>
             </div>
