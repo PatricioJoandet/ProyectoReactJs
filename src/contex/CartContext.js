@@ -7,8 +7,16 @@ const CartProvider = ({children}) =>{
 
   const [cart, setCart] = useState([])
   const [qty, setQty] = useState(0)
+
   const addToCart = (product) =>{
-    setCart([...cart, product])
+    const productIndex = cart.findIndex(productCart => productCart.id === product.id)
+    if(productIndex !== -1){
+      const newCart = [...cart]
+      newCart[productIndex].QtyCounter = product.QtyCounter + newCart[productIndex].QtyCounter
+      setCart(newCart)
+    }else{
+      setCart([...cart, product])
+    }
   }
 
   const clear = () =>{ 
