@@ -1,7 +1,6 @@
 import '../App.css'
 import { useContext } from "react"
 import { CartContext } from "../contex/CartContext"
-import Item from '../components/Item'
 
 const Checkout = () =>{
 
@@ -19,10 +18,10 @@ const Checkout = () =>{
                 <div className="checkoutItems"> 
                     <div>
                         {cart.map(product=>
-                            <div className='checkoutItem'>
+                            <div key={product.id} className='checkoutItem'>
 															<div className='checkoutItemInfo'>
 																<div className='checkoutItemImg'>
-																	<img src={product.images[0].resource_url} />
+																	<img src={product.images[0].resource_url} alt={`Imagen de ${product.title}`}/>
 																</div>
 																<div>
 																	<h2>{product.title}</h2>
@@ -33,7 +32,7 @@ const Checkout = () =>{
 															<div>
 																<button onClick={()=>removeFromCart(product.id)}>Borrar</button>
 															</div>
-                                    {console.log(product)}  
+                                  
                             </div>)}
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import ItemCounter from "./ItemCounter"
 import '../App.css'
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { Link } from "react-router-dom"
 
 const ItemDetail = ({data}) =>{
@@ -18,7 +18,7 @@ const ItemDetail = ({data}) =>{
                     <img className="itemDetailImg" src={data.images[0].resource_url} alt={`Portada de ${title}`}/>
                 </div>
                 <div className="altImg">               
-                    {data.images.slice(0,4).map(img=><img src={img.resource_url} alt={`Imagen de ${title}`}/>)}
+                    {data.images.slice(0,4).map(img=><img key={img.resource_url} src={img.resource_url} alt={`Imagen de ${title}`}/>)}
                 </div>
 
             </div>
