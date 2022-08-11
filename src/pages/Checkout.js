@@ -10,6 +10,7 @@ const Checkout = () =>{
         <div>
             <div className='checkoutTitle'>
                 <h1>Checkout</h1>
+								{cart.length>0 ? <button onClick={clear}>eliminar carrito</button> : <h2>carrito vacio</h2>}		
             </div>
             <div>
                 <div className="checkoutWrapper">
@@ -47,9 +48,9 @@ const Checkout = () =>{
 															<div className='checkoutProductTotal'>
 																<span>${product.price * product.QtyCounter}</span>
 															</div>
-
 														</div>
-                          </div>)}															
+                          </div>)}		
+																			
                 </div>
             </div>
         </div>
