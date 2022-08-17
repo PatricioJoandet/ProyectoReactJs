@@ -2,8 +2,13 @@ import logo from '../img/logo.png'
 import '../App.css'
 import CartWidget from './CartWidget'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../contex/CartContext'
+import { useContext } from 'react'
 
 function NavBar() {
+
+  const {qty} = useContext(CartContext)
+  
   return (
     <nav className='navContainer'>
 
@@ -17,10 +22,10 @@ function NavBar() {
             <Link to="/"><li><button>Home</button></li></Link>
           </ul>
         </div>
-        <div className='carrito'>
-          <Link to={'/cart/'}>
-            <CartWidget />
-          </Link>
+        <div className={qty>0? 'carrito': 'carrito emptyCart'}>
+            <Link to={'/cart/'}>
+              <CartWidget />
+            </Link>
         </div>
     </nav>
   );
