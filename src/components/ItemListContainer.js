@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Categories from './Categories'
 import Pagination from './Pagination'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getFirestore, getDocs, query, doc, getDoc, addDoc, deleteDoc, updateDoc, setDoc, where } from "firebase/firestore/lite";
 
 const ItemListContainer = ()=>{
   
@@ -14,7 +14,7 @@ const ItemListContainer = ()=>{
   const [pages, setPages] = useState()
   const key = "nwzFKjYuERHZuLUJfuVf"
   const secret = "EFbNzVTpAqxwxBaybfXLsLsYQthFsdYs"
-  
+
   useEffect(() => {
       setLoading(true)
       async function getData(){
@@ -22,9 +22,22 @@ const ItemListContainer = ()=>{
         const categoryLoad = `type=release&genre=${cat}`
         let response = await fetch(`https://api.discogs.com/database/search?${cat?categoryLoad:defaultLoad}&key=${key}&secret=${secret}`)
         let data = await response.json();
-        await setListProducts(data.results)
         await setPages(data.pagination.urls)
-        setLoading(false)
+        const database = getFirestore();
+        const productsCollection = collection(database, "products");
+        data.results.forEach((product) =>{
+          setDoc(doc(productsCollection, product.id.toString()), product, { merge: true })
+        })
+        let firebaseProducts = []
+        await getDocs(productsCollection, "products").then(results=>results.forEach(result=>{
+          data.results.forEach((r)=>{
+            if(result.data().id === r.id){
+              firebaseProducts = [...firebaseProducts, result.data()]
+            }
+          })
+        }))
+        await setListProducts(firebaseProducts)
+          setLoading(false)
     }
       getData()
     },[cat])
