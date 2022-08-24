@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Categories from './Categories'
 import Pagination from './Pagination'
+import { collection, getDocs } from 'firebase/firestore'
 
 const ItemListContainer = ()=>{
   
