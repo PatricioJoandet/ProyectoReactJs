@@ -1,11 +1,50 @@
 import '../App.css'
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { CartContext } from "../contex/CartContext"
 import { Link } from 'react-router-dom'
+import Modal from '../components/Modal'
+import { collection, addDoc, getFirestore } from 'firebase/firestore'
 
 const Checkout = () =>{
 
-    const {cart, clear, removeFromCart, total} = useContext(CartContext)
+  const [showModal, setShowModal] = useState(false)
+  const {cart, clear, removeFromCart, total} = useContext(CartContext)
+	const [success, setSuccess] = useState()
+	
+	const [formData, setFormData] = useState({
+		name: '',
+		phone: '',
+		email: ''
+	})
+
+	const [order, setOrder] = useState({
+		items: cart.map((product)=>{
+			return{
+				id: product.id,
+				title: product.title,
+				price: product.price
+			}
+		}),
+		buyer: {},
+		total: total
+	})
+
+	const handleChange = (e) =>{
+		setFormData({...formData, [e.target.name] : e.target.value})
+	}
+
+	const submitData = (e) => {
+		e.preventDefault()
+		pushData({...order, buyer: formData})
+	}
+
+	const pushData = async(newOrder) =>{
+		const database = getFirestore()
+		const collectionOrder = collection(database, "orders")
+		const orderDoc = await addDoc(collectionOrder, newOrder)
+		setSuccess(orderDoc.id)
+	}
+
     if (cart.length==0){ 
         return(
             <div className='emptyCheckout'>
@@ -59,9 +98,45 @@ const Checkout = () =>{
                                                             </div>
                             </div>)}
                         <div className='checkoutTotalTotal'>Total: {`$ ${total}`}</div>
-                                                                                
+                        <button onClick={() => setShowModal(true)}>Comprar</button>
                     </div>
                 </div>
+                {showModal &&
+									<Modal title="DATOS DE COMPRA" close={()=>setShowModal()}>
+										{success ?(
+											<>
+										<h2>Orden OK</h2>
+										<p>ID DE COMPRA: {success}</p>
+										<button onClick={clear}>FINALIZAR</button>
+										</>
+										):
+										
+										<form onSubmit={submitData}>
+											<input
+												type='text'
+												name='name'
+												placeholder='Nombre'
+												onChange={handleChange}
+												value={formData.name}
+												/>
+											<input
+												 type='number'
+												 name='phone'
+												 placeholder='Telefono'
+												 value={formData.phone}
+												 onChange={handleChange}
+												/>
+											<input 
+												type='email'
+												name='email'
+												placeholder='email'
+												value={formData.email}
+												onChange={handleChange}
+												/>
+												<button type="submit"> ENVIAR </button>
+										</form>
+										}
+									</Modal>}
             </div>
         )}
 }
