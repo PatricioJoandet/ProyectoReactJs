@@ -1,6 +1,6 @@
 import '../App.css'
 import { useContext, useState } from "react"
-import { CartContext } from "../contex/CartContext"
+import { CartContext } from "../context/CartContext"
 import { Link } from 'react-router-dom'
 import Modal from '../components/Modal'
 import { collection, addDoc, getFirestore } from 'firebase/firestore'
@@ -45,7 +45,7 @@ const Checkout = () =>{
 		setSuccess(orderDoc.id)
 	}
 
-    if (cart.length==0){ 
+    if (cart.length===0){ 
         return(
             <div className='emptyCheckout'>
                 <h2>carrito vacio</h2>

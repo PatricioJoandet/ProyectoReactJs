@@ -11,12 +11,12 @@ import { getFirestore } from 'firebase/firestore/lite';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBJgVtkzW4YAe-qu8JogZmtmBohkN-FRvI",
-  authDomain: "rapture-records-7682c.firebaseapp.com",
-  projectId: "rapture-records-7682c",
-  storageBucket: "rapture-records-7682c.appspot.com",
-  messagingSenderId: "215824700736",
-  appId: "1:215824700736:web:0f2df511429e05d12cd6a5"
+  apiKey: "AIzaSyD6N9LrzWJV4DD3mh8CqWDtqHatxg9D4jg",
+  authDomain: "rapture-records-66e2d.firebaseapp.com",
+  projectId: "rapture-records-66e2d",
+  storageBucket: "rapture-records-66e2d.appspot.com",
+  messagingSenderId: "801744848000",
+  appId: "1:801744848000:web:3d2e99f6642d703dedd265"
 };
 
 // Initialize Firebase

@@ -5,6 +5,9 @@ import { useParams } from 'react-router-dom'
 import Categories from './Categories'
 import Pagination from './Pagination'
 import { collection, getFirestore, getDocs, doc, setDoc } from "firebase/firestore/lite";
+import { Audio } from 'react-loader-spinner'
+import fetchData from '../helpers/fetchData'
+
 
 const ItemListContainer = ()=>{
   
@@ -15,45 +18,61 @@ const ItemListContainer = ()=>{
   const key = "nwzFKjYuERHZuLUJfuVf"
   const secret = "EFbNzVTpAqxwxBaybfXLsLsYQthFsdYs"
 
+  const paginationFetch = (pageUrl) =>{
+    let fetchApi = fetch(pageUrl);
+    fetchData(2000, fetchApi).then(
+      res => {
+        if(res.ok){
+          res.json().then(
+            res => {
+              setPages(res.pagination)
+              res.results.forEach((r)=>{
+                r.price = Math.trunc((r.community.have - r.community.want)*.8+2000)
+              })
+              setListProducts(res.results)
+              console.log(res.pagination)
+            }
+          )
+        }else{
+          console.error("Fetch error")
+        }
+      }
+    )
+  }
+  
   useEffect(() => {
       setLoading(true)
-      async function getData(){
-        const defaultLoad = 'type=release&sort=hot%2Cdesc?'
-        const categoryLoad = `type=release&genre=${cat}`
-        let response = await fetch(`https://api.discogs.com/database/search?${cat?categoryLoad:defaultLoad}&key=${key}&secret=${secret}`)
-        let data = await response.json();
-        await setPages(data.pagination.urls)
-        const database = getFirestore();
-        const productsCollection = collection(database, "products");
-        data.results.forEach((product) =>{
-          setDoc(doc(productsCollection, product.id.toString()), product, { merge: true })
-        })
-        let firebaseProducts = []
-        await getDocs(productsCollection, "products").then(results=>results.forEach(result=>{
-          data.results.forEach((r)=>{
-            if(result.data().id === r.id){
-              firebaseProducts = [...firebaseProducts, result.data()]
-            }
-          })
-        }))
-        await setListProducts(firebaseProducts)
-          setLoading(false)
-    }
-      getData()
+      const defaultLoad = 'type=release&sort=hot%2Cdesc?';
+      const categoryLoad = `type=release&genre=${cat}`;
+      const fetchApi = fetch(`https://api.discogs.com/database/search?${cat?categoryLoad:defaultLoad}&key=${key}&secret=${secret}`);
+
+      fetchData(2000, fetchApi).then(
+        res => {
+          if(res.ok){
+            res.json().then(
+              res => {
+                res.results.forEach((r)=>{
+                  r.price = Math.trunc((r.community.have - r.community.want)*.8+2000)
+                })
+                setListProducts(res.results)
+                setLoading(false)
+                setPages(res.pagination)
+              }
+            ).catch(err =>{console.error("Fetch error: ", err)})
+          } else{
+            console.error("Error")
+          }
+        }
+      ).catch(err =>{console.error("Fetch error: ", err)}) 
     },[cat])
 
   if (isLoading){
-      return <div> Loading ...</div>
+      return <div className='loaderContainer'> <Audio color="#A71D31"/> </div>
   }else{ 
   return(
     <>
-      <div className='itemListContainer'>
         <Categories/>
-        {cat? <h1>Mostrando: {cat.charAt(0).toUpperCase() + cat.slice(1).toLowerCase()}</h1>:<h1>Mostrando todo</h1>}
-        <Pagination setListProducts={setListProducts} setPages={setPages} pages={pages} />
-        <ItemList dataProducts={listProducts} />
-
-      </div>
+        <ItemList dataProducts={listProducts} pagination={pages} paginationFetch={paginationFetch} cat={cat} />
     </>
   )
 }

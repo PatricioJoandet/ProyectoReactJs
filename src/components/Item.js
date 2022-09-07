@@ -2,8 +2,7 @@ import '../App.css'
 import { Link } from 'react-router-dom'
 
 const Item = ({ data, customClass})=>{
-    const {title, cover_image, community, id} = data
-    data.price = Math.trunc((community.have - community.want)*.8+2000)
+    const {title, cover_image, community, id, price} = data
     data.stock = Math.trunc((community.have+community.want)/40)
     
     return(
@@ -11,6 +10,7 @@ const Item = ({ data, customClass})=>{
           <div className='singleItem'>
               <img src={cover_image || data.images[0].resource_url} alt={`Imagen de ${title}`} />
               <h2>{title}</h2>
+              <p>{price}</p>
           </div>
       </Link>
     )

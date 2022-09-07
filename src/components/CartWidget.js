@@ -1,6 +1,6 @@
 import carrito from '../img/carrito.svg'
 import '../App.css'
-import {CartContext} from '../contex/CartContext'
+import {CartContext} from '../context/CartContext'
 import { useContext } from 'react'
 
 const CartWidget = () => {

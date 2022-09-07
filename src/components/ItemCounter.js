@@ -1,5 +1,5 @@
 import { useState, useContext} from "react";
-import { CartContext } from "../contex/CartContext";
+import { CartContext } from "../context/CartContext";
 import '../App.css'
 
 const ItemCounter = ({product, stock, setQtySelected}) =>{

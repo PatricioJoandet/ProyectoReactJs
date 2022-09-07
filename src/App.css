@@ -98,23 +98,51 @@ h3{
     background-color: red;
 }
 
-.itemListContainer{
-    margin: 0 auto;
-    margin-top: 30px;
-    text-align: center;
-    background-color: #EDF2F4;
-    border-radius: 10px;
-}
-
-.itemContainer{
+.ItemListWrapper{
+    width: 90%;
+    min-height: calc(100vh - 76px - 20px - 60px - 60px - 1.1rem);
+    margin: auto;
+    max-width: 1800px;
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: center;
-    width: auto;
-    flex-wrap: wrap;
-
+    align-items: center;
 }
 
+.ItemList__contentWrapper{
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ItemList__pagination{
+    background-color: red;
+    align-self: center;
+    margin-right: 50px;
+    margin-bottom: 50px;
+}
+
+
+.ItemList__pagination__content{
+    flex-flow: row wrap;
+    gap: 1.4rem;
+}
+
+.ItemList__content{
+    margin: auto;
+    width: 90%;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    gap: 1.4rem;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    margin-bottom: 1.6rem;
+}
 .singleItem{
     background: rgba( 237, 125, 58, 0.55 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -143,6 +171,11 @@ h3{
 .singleItem img{
     border: solid 2px #A71D31 ;
     width: 200px;
+    height: 200px;
+}
+
+.singleItem h2{
+    font-size: 0.7rem;
 }
 
 .singleItem button{
@@ -365,23 +398,46 @@ h3{
     justify-content: center;
 }
 
-.pagination button{
-    margin: 0px 10px 0px 10px;
-    width: 50px;
-    height: 20px;
-    border-radius: 20px;
-    border: 1px black solid;
+.paginationContainer{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: start;
+    align-items: center;
 }
 
-.pagination button:hover{
+.paginationContainer button{
+    margin: 0px 10px 0px 10px;
+    padding: 3px;
+    border-radius: 15px;
+    border: 1px black solid;
+    flex: 1;
+}
+
+.paginationContainer button:hover{
     background-color: #DCED31 ;
     transform: scale(1.1);
 
 }
 
-.paginationPage{
-    font-weight: 600;
-    font-size: 1.2rem;
+.paginationContainer button:active{
+    transform: translate(2px,2px);
+}
+
+.paginationFirstLast{
+    line-height: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.4px;
+}
+
+.paginationNextPrev{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.4px;
 }
 
 .modal{
@@ -405,4 +461,11 @@ h3{
     right: 10px;
     top: 20px;
     cursor: pointer;
+}
+
+.loaderContainer {
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
