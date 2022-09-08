@@ -143,6 +143,15 @@ h3{
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     margin-bottom: 1.6rem;
 }
+
+.ItemList__content h2 {
+    color: black;
+}
+
+.ItemList__content p {
+    color: #A71D31;
+}
+
 .singleItem{
     background: rgba( 237, 125, 58, 0.55 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -157,6 +166,7 @@ h3{
     display: flex;
     align-items: center;
     flex-direction: column;
+
 }
 
 .singleItem:hover{
@@ -176,6 +186,11 @@ h3{
 
 .singleItem h2{
     font-size: 0.7rem;
+
+}
+
+.singleItem a{
+    text-decoration: none;
 }
 
 .singleItem button{
@@ -272,30 +287,57 @@ h3{
     flex-wrap: wrap;
     flex-shrink: 10;
     justify-content: center;
+    margin-top: 10px;
 }
 
-.categoryBtn{
-    width: 130px;
-    height: 50px;
-    border-radius: 30px;
-    border: solid 1px black;
-    margin: 0 10px 0 10px;
-    transition:  all ease 0.2s;
+.categoriesBtn {
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin: 10px;
 }
 
-.categoryBtn:hover{
+.categoriesBtn:after {
+  content: "";
+  background-color: #ffe54c;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
+}
+
+.categoriesBtn:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+.active{
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid black;
     cursor: pointer;
-    background-color: #DCED31;
-    animation: shake 0.5s infinite ;
+    position: relative;
+    background-color: #ffe54c;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 10px;
 }
-@keyframes shake{
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(5deg); }
-    50% { transform: rotate(0eg); }
-    75% { transform: rotate(-5deg); }
-    100% { transform: rotate(0deg); }
-}
-
 
 .checkoutTitle{
     text-align: center;
@@ -392,52 +434,38 @@ h3{
     align-items: center;
 }
 
-.pagination{
+.paginationContainer{
     display: flex;
-    flex-direction: row;
     justify-content: center;
 }
 
-.paginationContainer{
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: start;
-    align-items: center;
+.paginationControls{
+    color: white;
+    padding: 5px;
+    background-color: #A71D31;
+    border: 1px solid black;
+    background: rgba( 167, 29, 49, 0.55 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
-.paginationContainer button{
+.paginationControls button{
     margin: 0px 10px 0px 10px;
     padding: 3px;
-    border-radius: 15px;
     border: 1px black solid;
     flex: 1;
 }
 
-.paginationContainer button:hover{
+.paginationControls button:hover{
     background-color: #DCED31 ;
     transform: scale(1.1);
-
 }
 
-.paginationContainer button:active{
+.paginationControls button:active{
     transform: translate(2px,2px);
-}
-
-.paginationFirstLast{
-    line-height: 1;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: stretch;
-    gap: 0.4px;
-}
-
-.paginationNextPrev{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: stretch;
-    gap: 0.4px;
 }
 
 .modal{

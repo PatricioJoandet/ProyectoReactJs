@@ -10,7 +10,7 @@ const Item = ({ data, customClass})=>{
           <div className='singleItem'>
               <img src={cover_image || data.images[0].resource_url} alt={`Imagen de ${title}`} />
               <h2>{title}</h2>
-              <p>{price}</p>
+              <p>${price}</p>
           </div>
       </Link>
     )

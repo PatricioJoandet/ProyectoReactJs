@@ -71,8 +71,10 @@ const ItemListContainer = ()=>{
   }else{ 
   return(
     <>
-        <Categories/>
+        <Categories cat={cat}/>
+        <Pagination pagination={pages} paginationFetch={paginationFetch}/>
         <ItemList dataProducts={listProducts} pagination={pages} paginationFetch={paginationFetch} cat={cat} />
+        <Pagination pagination={pages} paginationFetch={paginationFetch}/>
     </>
   )
 }
