@@ -355,6 +355,55 @@ h3{
     
 }
 
+.checkoutHead{
+    align-content: c;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #CCCCCC;
+    margin: 0 auto;
+    padding-bottom: 5px;
+    
+}
+
+.checkoutMyCart{
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.checkoutBuy{
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    flex-basis: 20%;
+}
+
+.checkoutBuy button{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.clearCartBtn{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.clearCartBtn:hover{
+    color: #ffe54c;
+}
+
 .checkoutProduct{
     grid-column: 2/3;
     display: flex;
