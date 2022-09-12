@@ -48,20 +48,17 @@ const Checkout = () =>{
 	if (cart.length===0){ 
   	return(
     	<div className='emptyCheckout'>
-      	<h2>carrito vacio</h2>
+      	<h1>Carrito vacio :(</h1>
         <Link to={"/"}><button>Volver</button></Link>
       </div>
  	 )
 	}else{
     return(
-    	<div className=''>
+			<>
       	<div className='checkoutHead'>
 					<div className='checkoutMyCart'>
 						<h1>Mi Carrito</h1>
 						<button className='clearCartBtn' onClick={clear}>eliminar carrito</button>
-					</div>
-					<div className='checkoutBuy'>
-						<button> Iniciar Compra</button>
 					</div>
     		</div>
       	<div>
@@ -80,30 +77,31 @@ const Checkout = () =>{
 								<h3>Total</h3>
 							</div>
 						</div>
-						{cart.map(product=>
-							<div key={product.id} className='checkoutItem'>
-								<div className='checkoutItemInfo'>
-									<div className='checkoutProductImg'>
-										<img src={product.images[0].resource_url} alt={`Imagen de ${product.title}`}/>
-									</div>
-									<div className='checkoutProductTitle'>
-										<h2>{product.title}</h2>
-										<h3>{product.artists_sort}</h3>
-									</div>
-									<div className='checkoutProductQty'>
-										<span>{product.QtyCounter}</span>
-										<button onClick={()=>removeFromCart(product.id)}>Borrar</button>
-									</div>
-									<div className='checkoutProductPrice'>
-										<span>${product.price}</span>
-									</div>
-									<div className='checkoutProductTotal'>
-										<span>${product.price * product.QtyCounter}</span>
+							{cart.map(product=>
+								<div key={product.id} className='checkoutItem'>
+									<div className='checkoutItemInfo'>
+										<div className='checkoutProductImg'>
+											<img src={product.images[0].resource_url} alt={`Imagen de ${product.title}`}/>
+										</div>
+										<div className='checkoutProductTitle'>
+											<h2>{product.title}</h2>
+											<h3>{product.artists_sort}</h3>
+										</div>
+										<div className='checkoutProductQty'>
+											<span>{product.QtyCounter}</span>
+											<button onClick={()=>removeFromCart(product.id)}>Borrar</button>
+										</div>
+										<div className='checkoutProductPrice'>
+											<span>${product.price}</span>
+										</div>
+										<div className='checkoutProductTotal'>
+											<span>${product.price * product.QtyCounter}</span>
+										</div>
 									</div>
 								</div>
-							</div>
-						)}
-						<div className='checkoutTotalTotal'>Total: {`$ ${total}`}</div>
+							)}
+						<div className='checkoutTotalTotal'>
+							<span>Total: {`$ ${total}`}</span>
 							<button onClick={() => setShowModal(true)}>Comprar</button>
 						</div>
 					</div>
@@ -143,6 +141,7 @@ const Checkout = () =>{
 							}
 						</Modal>}
       </div>
+			</>
     )}
 }
 
