@@ -1,18 +1,22 @@
 import Item from './Item'
+import { Container, Row, Col } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ItemList = ({dataProducts}) =>{
 
 	return(
-  	<div className='itemListContainer'> {/* //item list wrapper */}
-				<div className='ItemList__contentWrapper'>
-					<div className='ItemList__content'>
+  	<Container>
+				<Row>
+					<Col className="d-flex flex-row flex-wrap justify-content-lg-center">
 						{dataProducts.map((product) =>{
-							return <Item key={product.id} data={product} />
+							return (
+									<Item key={product.id} data={product} />
+							)
 						})}
-					</div>
-				</div>
+					</Col>
+				</Row>
 			
-  	</div>
+  	</Container>
   )
 }
 

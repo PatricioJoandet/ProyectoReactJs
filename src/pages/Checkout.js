@@ -4,6 +4,9 @@ import { CartContext } from "../context/CartContext"
 import { Link } from 'react-router-dom'
 import Modal from '../components/Modal'
 import { collection, addDoc, getFirestore } from 'firebase/firestore'
+import { Button, Container, Row, Col } from 'react-bootstrap'
+
+
 
 const Checkout = () =>{
 
@@ -54,12 +57,14 @@ const Checkout = () =>{
  	 )
 	}else{
     return(
-			<>
+			<Container>
       	<div className='checkoutHead'>
-					<div className='checkoutMyCart'>
-						<h1>Mi Carrito</h1>
-						<button className='clearCartBtn' onClick={clear}>eliminar carrito</button>
-					</div>
+					<Row >
+						<Col className='align-content-lg-center'>
+							<h1>Mi Carrito</h1>
+							<button className='clearCartBtn' onClick={clear}>eliminar carrito</button>
+						</Col>
+					</Row>
     		</div>
       	<div>
 					<div className="checkoutWrapper">
@@ -102,7 +107,7 @@ const Checkout = () =>{
 							)}
 						<div className='checkoutTotalTotal'>
 							<span>Total: {`$ ${total}`}</span>
-							<button onClick={() => setShowModal(true)}>Comprar</button>
+							<Button onClick={() => setShowModal(true)}>Comprar</Button>
 						</div>
 					</div>
 					{showModal &&
@@ -141,7 +146,7 @@ const Checkout = () =>{
 							}
 						</Modal>}
       </div>
-			</>
+			</Container>
     )}
 }
 
