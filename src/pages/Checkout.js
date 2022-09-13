@@ -2,9 +2,11 @@ import '../App.css'
 import { useContext, useState } from "react"
 import { CartContext } from "../context/CartContext"
 import { Link } from 'react-router-dom'
-import Modal from '../components/Modal'
-import { collection, addDoc, getFirestore } from 'firebase/firestore'
-import { Button, Container, Row, Col } from 'react-bootstrap'
+import MyModal from '../components/MyModal'
+import { collection, addDoc, getFirestore } from 'firebase/firestore/lite'
+import { Button, Container, Row, Col, Form } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { isDisabled } from '@testing-library/user-event/dist/utils'
 
 
 
@@ -107,44 +109,37 @@ const Checkout = () =>{
 							)}
 						<div className='checkoutTotalTotal'>
 							<span>Total: {`$ ${total}`}</span>
-							<Button onClick={() => setShowModal(true)}>Comprar</Button>
+							<button onClick={() => setShowModal(true)}>Comprar</button>
 						</div>
 					</div>
 					{showModal &&
-						<Modal title="DATOS DE COMPRA" close={()=>setShowModal()}>
+						<MyModal title="DATOS DE COMPRA" show={showModal} close={()=>setShowModal()}>
 							{success ?(
 								<>
-									<h2>Orden OK</h2>
+									<h2>Orden Enviada!</h2>
 									<p>ID DE COMPRA: {success}</p>
-									<button onClick={clear}>FINALIZAR</button>
+									<h3> Gracias por comprar con nosotros!</h3>
+									<Button variant='success' onClick={clear}>FINALIZAR</Button>
 								</>
 							):				
-								<form onSubmit={submitData}>
-									<input
-										type='text'
-										name='name'
-										placeholder='Nombre'
-										onChange={handleChange}
-										value={formData.name}
-									/>
-									<input
-										type='number'
-										name='phone'
-										placeholder='Telefono'
-										value={formData.phone}
-										onChange={handleChange}
-									/>
-									<input 
-										type='email'
-										name='email'
-										placeholder='email'
-										value={formData.email}
-										onChange={handleChange}
-									/>
-									<button type="submit"> ENVIAR </button>
-								</form>
+								<Form onSubmit={submitData}>
+									<Form.Group>
+										<Form.Label>Nombre y Apellido</Form.Label>
+										<Form.Control type="text" placeholder='Nombre y Apellido' name='name' onChange={handleChange} value={formData.name}/>
+									</Form.Group>
+									<Form.Group>
+										<Form.Label>Telefono</Form.Label>
+										<Form.Control type="number" placeholder='Telefono' name='phone'  onChange={handleChange} value={formData.phone}/>
+									</Form.Group>
+									<Form.Group controlId="formBasicEmail">
+										<Form.Label>Email</Form.Label>
+										<Form.Control type="email" placeholder='Direccion de Email' name='email' onChange={handleChange} value={formData.email}/>
+									</Form.Group>
+									<Button className={`m-2 ${(formData.name&&formData.phone&&formData.email)===""?"disabled":""}`} variant='success' type="submit"> Enviar Pedido </Button>
+									<Button className='m-2' variant='danger' onClick={()=>setShowModal(false)}>Cancelar</Button>
+								</Form>
 							}
-						</Modal>}
+						</MyModal>}
       </div>
 			</Container>
     )}

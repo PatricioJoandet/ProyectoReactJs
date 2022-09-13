@@ -1,21 +1,20 @@
 import '../App.css'
-import { useState } from 'react'
+import { Container, Pagination } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+const Paginationn = ({pagination, paginationFetch}) =>{
 
-const Pagination = ({pagination, paginationFetch}) =>{
-
-    return(
-        <div className='paginationContainer'>
-            <div className='paginationControls'>
-                <button onClick={()=>paginationFetch(pagination.urls.first)}> {`<<`} </button>
-                <button onClick={()=>paginationFetch(pagination.urls.prev)}> {`<`} </button>
-                <span> Página {pagination.page} de {pagination.pages}</span>
-                <button onClick={()=>paginationFetch(pagination.urls.next)}> {`>`} </button>
-                <button onClick={()=>paginationFetch(pagination.urls.last)}> {`>>`} </button>
-            </div>
-        </div>
-
-    )
+	return(
+			<Container className=' paginationControls d-flex justify-content-center mb-3 mt-3'>
+				<Pagination>
+					<Pagination.First  className={pagination.page===1?"disabled":""} onClick={()=>paginationFetch(pagination.urls.first)} />
+					<Pagination.Prev className={pagination.page===1?"disabled":""} onClick={()=>paginationFetch(pagination.urls.prev)} /> 
+					<Pagination.Item active>{pagination.page}</Pagination.Item>
+					<Pagination.Next className={pagination.page===pagination.pages?"disabled":""} onClick={()=>paginationFetch(pagination.urls.next)} />
+					<Pagination.Last className={pagination.page===pagination.pages?"disabled":""} onClick={()=>paginationFetch(pagination.urls.last)} />
+				</Pagination>
+			</Container>
+  )
 }
 
-export default Pagination
+export default Paginationn

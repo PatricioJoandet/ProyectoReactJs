@@ -1,5 +1,6 @@
 import '../App.css'
 import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
 const Item = ({ data, customClass})=>{
     const {title, cover_image, community, id, price} = data
@@ -11,6 +12,7 @@ const Item = ({ data, customClass})=>{
               <img src={cover_image || data.images[0].resource_url} alt={`Imagen de ${title}`} />
               <h2>{title}</h2>
               <p>${price}</p>
+              <Button variant="success">COMPRAR</Button>
           </div>
       </Link>
     )

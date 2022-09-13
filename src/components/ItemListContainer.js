@@ -4,10 +4,10 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Categories from './Categories'
 import Pagination from './Pagination'
-import { collection, getFirestore, getDocs, doc, setDoc } from "firebase/firestore/lite";
 import { Audio } from 'react-loader-spinner'
 import fetchData from '../helpers/fetchData'
-
+import { Container } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ItemListContainer = ()=>{
   
@@ -70,12 +70,12 @@ const ItemListContainer = ()=>{
       return <div className='loaderContainer'> <Audio color="#A71D31"/> </div>
   }else{ 
   return(
-    <>
-        <Categories cat={cat}/>
+    <Container>
+      <Categories cat={cat}/>
         <Pagination pagination={pages} paginationFetch={paginationFetch}/>
         <ItemList dataProducts={listProducts} pagination={pages} paginationFetch={paginationFetch} cat={cat} />
         <Pagination pagination={pages} paginationFetch={paginationFetch}/>
-    </>
+    </Container>
   )
 }
 }

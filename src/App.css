@@ -1,11 +1,13 @@
 *{
     margin: 0;
     padding: 0;
-    
+    list-style: none;  
 }
 
+
+
 a{
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 body{
@@ -176,7 +178,9 @@ h3{
 }
 
 .singleItem p{
+    color: #A71D31;
     font-weight: 500;
+    font-size: 1.rem;
 }
 
 .singleItem img{
@@ -186,25 +190,9 @@ h3{
 }
 
 .singleItem h2{
-    font-size: 0.7rem;
+    color: black;
+    font-size: 0.9rem;
 
-}
-
-.singleItem a{
-    text-decoration: none;
-}
-
-.singleItem button{
-    padding: 2px;
-    width: 100px;
-    background-color: #0CCE6B;
-    border: none;
-    border-radius: 10px;
-}
-
-.singleItem button:hover{
-    background-color: #DCED31;
-    cursor: pointer;
 }
 
 .itemCounter{
@@ -338,7 +326,7 @@ h3{
   left: 0px;
 }
 
-.active{
+.activee{
     font-size: 16px;
     font-weight: 200;
     letter-spacing: 1px;
@@ -499,9 +487,6 @@ h3{
     align-items: center;
 }
 
-.emptyCheckout h1{
-
-}
 
 .emptyCheckout button{
     width: 100px;
@@ -516,13 +501,7 @@ h3{
     background-color: #DCED31;
     color: black;
 }
-
-.paginationContainer{
-    display: flex;
-    justify-content: center;
-}
-
-.paginationControls{
+.paginationControls ul{
     color: white;
     padding: 5px;
     background-color: #A71D31;
@@ -535,43 +514,14 @@ h3{
     border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
-.paginationControls button{
-    margin: 0px 10px 0px 10px;
-    padding: 3px;
-    border: 1px black solid;
-    flex: 1;
-}
 
-.paginationControls button:hover{
-    background-color: #DCED31 ;
+.paginationControls li a:hover{
+    background-color: #DCED31;
     transform: scale(1.1);
 }
 
 .paginationControls button:active{
     transform: translate(2px,2px);
-}
-
-.modal{
-    position: fixed;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    width: 90vw;
-    height: 90vh;
-    box-shadow: 1px 5px 5px #00000047;
-    border-radius: 5px;
-    padding: 20px;
-    overflow: hidden;
-}
-
-.modal img{
-    width: 30px;
-    position: absolute;
-    right: 10px;
-    top: 20px;
-    cursor: pointer;
 }
 
 .loaderContainer {
