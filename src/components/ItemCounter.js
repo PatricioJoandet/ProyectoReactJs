@@ -3,7 +3,7 @@ import { CartContext } from "../context/CartContext";
 import MyModal from "./MyModal";
 import '../App.css'
 
-const ItemCounter = ({product, stock, setQtySelected, setShowModal}) =>{
+const ItemCounter = ({product, stock, setQtySelected, setShowModal, className}) =>{
     
   const stockAv = stock
   const {addToCart} = useContext(CartContext)   
@@ -31,13 +31,15 @@ const ItemCounter = ({product, stock, setQtySelected, setShowModal}) =>{
   }
 
 	return(
-    <div>
-      <div className="itemCounter">
+    <div className="stockCount">
+      <div className="d-flex justify-content-center mb-2">
         <button onClick={subProduct}>-</button>
-        <span>{QtyCounter}</span>
+        <span className="m-2">{QtyCounter}</span>
         <button onClick={addProduct}>+</button>
 	    </div>
-    <button onClick={onAdd}>Agregar al carrito</button>
+      <div className="d-flex justify-content-center">
+          <button onClick={onAdd}>Agregar al carrito</button>
+      </div>
     </div>
   )
 }

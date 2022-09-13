@@ -25,60 +25,57 @@ const ItemDetail = ({data}) =>{
 
   return(
 		<Container>
-			<Row className="mt-5">
-				<Col className="d-flex">
-					<Col >
-						<div className="altImg">               
-								{data.images.slice(0,4).map(img=><img onClick={()=>selectImg(img.resource_url)} key={img.resource_url} src={img.resource_url} alt={`Imagen de ${title}`}/>)}
-						</div>
-					</Col>
-					<Col >
-							<div>
-								<img className="itemDetailImg" src={selectedImg} alt={`Portada de ${title}`}/>
-							</div>
-					</Col>
+			<Row className="mt-4">
+				<Col className="d-flex flex-column ">
+					<Container className="d-flex justify-content-center">
+						<img className="itemDetailImg" src={selectedImg} alt={`Portada de ${title}`}/>
+					</Container>
+					<Container className="justify-content-center altImg">            
+						{data.images.slice(0,4).map(img=><img onClick={()=>selectImg(img.resource_url)} key={img.resource_url} src={img.resource_url} alt={`Imagen de ${title}`}/>)}
+					</Container>
 				</Col>
 				<Col>
-					<div className="itemDetailInfo">
-						<div>
-							<h2>{data.artists_sort}</h2>
-							<h1 className="itemDetailTitle">{title}</h1>
-						</div>
-						<div>
-							<p className="itemDetailPrice">${data.price}</p>
-							<div className="stockCount">
-								<p>Stock: {stock}</p>
-								{qtySelected > 0 ? 
-								<MyModal title="Producto Agregado al carrito" show={showModal}>
-									<Link to='/cart'><Button variant="primary">Terminar Compra</Button> </Link>
-									<Link to='/'><Button variant="success"> Seguir comprando</Button> </Link>
-								</MyModal>
-								: <ItemCounter setShowModal={setShowModal} setQtySelected={setQtySelected} product={data} stock={stock}/>}
-							</div>
-						</div>
-					</div>
-					<Row className="">
+					<Container className="itemDetailInfo p-5">
 						<Col>
-							<div className="itemExtraInfo">
-								<div>
-									<details>
-										<summary>INFO</summary>
-										<p>Año: {year}</p>
-										<p>Categorias: {genres}</p>
-									</details>
-								</div>
-								<div>
-									<details>
-										<summary> Tracklist </summary>
-										<p>Tracklist:</p>{data.tracklist.map(track=> <p key={`${track.position}-${track.title}`}>{track.position}-{track.title}</p>)}
-									</details>
-								</div>
+							<div className="itemDetailTexts">
+								<h2>{data.artists_sort}</h2>
+								<h1 className="itemDetailTitle">{title}</h1>
+								<p className="itemDetailPrice">${data.price}</p>
 							</div>
 						</Col>
-					</Row>
+						<Col className="d-flex justify-content-center">
+								<div className="d-flex flex-column align-content-center">
+									<p className="text-center stock">Stock: {stock}</p>
+									{qtySelected > 0 ? 
+									<MyModal title="Producto Agregado al carrito" show={showModal}>
+										<Link to='/cart'><Button variant="primary">Terminar Compra</Button> </Link>
+										<Link to='/'><Button variant="success"> Seguir comprando</Button> </Link>
+									</MyModal>
+									: <ItemCounter className="d-flex flex-column" setShowModal={setShowModal} setQtySelected={setQtySelected} product={data} stock={stock}/>}
+								</div>
+						</Col>
+					</Container>
 				</Col>
 			</Row>
-
+			<Row>
+				<Col>
+					<div className="itemExtraInfo">
+						<div>
+							<details>
+								<summary>INFO</summary>
+									<p>Año: {year}</p>
+									<p>Categorias: {genres}</p>
+							</details>
+						</div>
+						<div>
+							<details>
+								<summary> Tracklist </summary>
+									<p>Tracklist:</p>{data.tracklist.map(track=> <p key={`${track.position}-${track.title}`}>{track.position}-{track.title}</p>)}
+							</details>
+						</div>
+					</div>
+				</Col>
+			</Row>
 		</Container>
 )}
 
