@@ -51,7 +51,6 @@ const ItemDetailContainer = () =>{
 									}else{
 										setDoc(doc(productsCollection, res.id.toString()),res,{merge: true})
 										setItemDet(res)
-										console.log("a")
 										setLoading(false)
 									}
 								}).catch(()=>{

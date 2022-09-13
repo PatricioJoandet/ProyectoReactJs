@@ -6,7 +6,6 @@ import MyModal from '../components/MyModal'
 import { collection, addDoc, getFirestore } from 'firebase/firestore/lite'
 import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { isDisabled } from '@testing-library/user-event/dist/utils'
 
 
 
@@ -119,7 +118,7 @@ const Checkout = () =>{
 									<h2>Orden Enviada!</h2>
 									<p>ID DE COMPRA: {success}</p>
 									<h3> Gracias por comprar con nosotros!</h3>
-									<Button variant='success' onClick={clear}>FINALIZAR</Button>
+									<Link to={'/'}><Button variant='success' onClick={clear}>FINALIZAR</Button></Link>
 								</>
 							):				
 								<Form onSubmit={submitData}>
