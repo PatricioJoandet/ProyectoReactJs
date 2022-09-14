@@ -6,6 +6,7 @@ import MyModal from '../components/MyModal'
 import { collection, addDoc, getFirestore } from 'firebase/firestore/lite'
 import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ItemCounter from '../components/ItemCounter'
 
 
 
@@ -58,60 +59,62 @@ const Checkout = () =>{
  	 )
 	}else{
     return(
+			<>
 			<Container>
-      	<div className='checkoutHead'>
-					<Row >
-						<Col className='align-content-lg-center'>
-							<h1>Mi Carrito</h1>
-							<button className='clearCartBtn' onClick={clear}>eliminar carrito</button>
-						</Col>
-					</Row>
-    		</div>
-      	<div>
-					<div className="checkoutWrapper">
-						<div className='checkoutHeader'>
-							<div className='checkoutProduct'>
-								<h3>Producto</h3>
-							</div>
-							<div className='checkoutQty'>
-								<h3>Cantidad</h3>
-							</div>
-							<div className='checkoutPrice'>
-								<h3>Precio</h3>
-							</div>
-							<div className='checkoutTotal'>
-								<h3>Total</h3>
-							</div>
-						</div>
-							{cart.map(product=>
-								<div key={product.id} className='checkoutItem'>
-									<div className='checkoutItemInfo'>
-										<div className='checkoutProductImg'>
+				<Row>
+					<Col>
+						<h1> Mi Carrito</h1>
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+					
+					</Col>
+					<Col>
+						<h3>Producto</h3>
+					</Col>
+					<Col>
+						<h3>Cantidad</h3>
+					</Col>
+					<Col>
+						<h3>Precio</h3>
+					</Col>
+					<Col>
+						<h3>Subtotal</h3>
+					</Col>
+				</Row>
+				<Row className='d-flex flex-column'>
+					{cart.map(product=>
+								<Row key={product.id} className='checkoutItem'>
+									<Col className='d-flex'>
+										<Col className='checkoutProductImg'>
 											<img src={product.images[0].resource_url} alt={`Imagen de ${product.title}`}/>
-										</div>
-										<div className='checkoutProductTitle'>
+										</Col>
+										<Col className='checkoutProductTitle d-flex flex-column'>
 											<h2>{product.title}</h2>
 											<h3>{product.artists_sort}</h3>
-										</div>
-										<div className='checkoutProductQty'>
+										</Col>
+										<Col className=''>
 											<span>{product.QtyCounter}</span>
 											<button onClick={()=>removeFromCart(product.id)}>Borrar</button>
-										</div>
-										<div className='checkoutProductPrice'>
+										</Col>
+										<Col className=''>
 											<span>${product.price}</span>
-										</div>
-										<div className='checkoutProductTotal'>
+										</Col>
+										<Col className=''>
 											<span>${product.price * product.QtyCounter}</span>
-										</div>
-									</div>
-								</div>
+										</Col>
+									</Col>
+								</Row>
 							)}
-						<div className='checkoutTotalTotal'>
+				</Row>
+				<Row>
+					<div className='checkoutTotalTotal'>
 							<span>Total: {`$ ${total}`}</span>
 							<button onClick={() => setShowModal(true)}>Comprar</button>
-						</div>
 					</div>
-					{showModal &&
+				</Row>
+				{showModal &&
 						<MyModal title="DATOS DE COMPRA" show={showModal} close={()=>setShowModal()}>
 							{success ?(
 								<>
@@ -138,9 +141,10 @@ const Checkout = () =>{
 									<Button className='m-2' variant='danger' onClick={()=>setShowModal(false)}>Cancelar</Button>
 								</Form>
 							}
-						</MyModal>}
-      </div>
+						</MyModal>
+				}
 			</Container>
+			</>
     )}
 }
 

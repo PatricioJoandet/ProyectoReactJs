@@ -27,12 +27,14 @@ const ItemDetail = ({data}) =>{
 		<Container>
 			<Row className="mt-4">
 				<Col className="d-flex flex-column ">
-					<Container className="d-flex justify-content-center">
-						<img className="itemDetailImg" src={selectedImg} alt={`Portada de ${title}`}/>
-					</Container>
-					<Container className="justify-content-center altImg">            
-						{data.images.slice(0,4).map(img=><img onClick={()=>selectImg(img.resource_url)} key={img.resource_url} src={img.resource_url} alt={`Imagen de ${title}`}/>)}
-					</Container>
+					<Container className="">
+						<Container className="d-flex justify-content-center">
+							<img className="itemDetailImg" src={selectedImg} alt={`Portada de ${title}`}/>
+						</Container>
+						<Container className="justify-content-center altImg">            
+							{data.images.slice(0,4).map(img=><img onClick={()=>selectImg(img.resource_url)} key={img.resource_url} src={img.resource_url} alt={`Imagen de ${title}`}/>)}
+						</Container>
+					</Container>	
 				</Col>
 				<Col>
 					<Container className="itemDetailInfo p-5">
@@ -51,7 +53,7 @@ const ItemDetail = ({data}) =>{
 										<Link to='/cart'><Button variant="primary">Terminar Compra</Button> </Link>
 										<Link to='/'><Button variant="success"> Seguir comprando</Button> </Link>
 									</MyModal>
-									: <ItemCounter className="d-flex flex-column" setShowModal={setShowModal} setQtySelected={setQtySelected} product={data} stock={stock}/>}
+									: <ItemCounter className="d-flex flex-column" addCart={true} setShowModal={setShowModal} setQtySelected={setQtySelected} product={data} stock={stock}/>}
 								</div>
 						</Col>
 					</Container>
@@ -59,7 +61,7 @@ const ItemDetail = ({data}) =>{
 			</Row>
 			<Row>
 				<Col>
-					<div className="itemExtraInfo">
+					<div className="mt-4 mb-4 p-3 itemExtraInfo">
 						<div>
 							<details>
 								<summary>INFO</summary>
@@ -75,6 +77,23 @@ const ItemDetail = ({data}) =>{
 						</div>
 					</div>
 				</Col>
+{/* 				<Col>
+					<div className="mt-4 mb-4 p-3 itemExtraInfo">
+						<div>
+							<details>
+								<summary>INFO</summary>
+									<p>Año: {year}</p>
+									<p>Categorias: {genres}</p>
+							</details>
+						</div>
+						<div>
+							<details>
+								<summary> Tracklist </summary>
+									<p>Tracklist:</p>{data.tracklist.map(track=> <p key={`${track.position}-${track.title}`}>{track.position}-{track.title}</p>)}
+							</details>
+						</div>
+					</div>						
+				</Col> */}
 			</Row>
 		</Container>
 )}

@@ -215,13 +215,18 @@ h3{
 
 .itemDetailImg{
     width: 500px;
-    border: 3px solid red;
-    border-radius: 24px;
+    border: 3px solid #A71D31;
+    border-radius: 16px;
 }
 
 
+.aas{
+    padding: 8px;
+    border-radius: 24px;
+    background-color: rgba(167, 29, 49, .7);
+}
+
 .itemDetailInfo{
-    border: solid 2px black;
     border-radius: 24px;
     color: black;
     background-color: rgba(167, 29, 49, .7);
@@ -236,8 +241,10 @@ h3{
 }
 
 .itemExtraInfo{
-    margin-top: 20px;
+    background-color: #DCED31;
+    border-radius: 24px;
     border: solid 1px black;
+    font-size: 1.8rem;
 }
 
 .itemDetailTitle{
@@ -266,7 +273,7 @@ h3{
 }
 
 .stockCount button:hover{
-    background-color: yellow;
+    background-color: #DCED31;
     transform: scale(1.1);
     color: black;
 }
@@ -278,7 +285,8 @@ h3{
 }
 
 .altImg img{
-    border: solid 2px black;
+    border: solid 2px #A71D31;
+    border-radius: 16px;
     width: 100px;
     height: auto;
     margin: 5px;
@@ -287,6 +295,7 @@ h3{
 .altImg img:hover{
     transition: all ease 0.2s;
     transform: scale(1.1);
+    border: solid 2px #DCED31;
 }
 
 .categoriesContainer{
@@ -358,14 +367,9 @@ h3{
     grid-template-columns: repeat(6,1fr);
 }
 
-.checkoutHeader{
-    display: grid;
-    grid-column: 1/7;
-    grid-template-columns: repeat(6,1fr);
-    
+.checkoutHeader h3{
+    font-size: 1rem;
 }
-
-
 
 .checkoutMyCart{
     padding-left: 10px;
@@ -426,7 +430,6 @@ h3{
 }
 
 .checkoutItem{
-    grid-column: 1/7;
     margin: 10px;
     border-bottom: 1px solid #CCCCCC;
 }
@@ -436,13 +439,14 @@ h3{
     grid-template-columns: repeat(6,1fr);
 }
 
-.checkoutProductTitle{
-    display: flex;
-    flex-direction: column;
-    grid-column: 2;
+.checkoutProductTitle h2{
+    font-size: 1.2rem;
 }
+.checkoutProductTitle h3{
+    font-size: 1rem;
+}
+
 .checkoutProductImg img{
-    grid-column: 1;
     width: 170px;
 }
 .checkoutProductQty{
@@ -535,6 +539,12 @@ h3{
     justify-content: center;
     align-items: center;
 }
+@media screen and (max-width: 991px){
+   .itemDetailTexts{
+       text-align: center;
+   }
+}   
+
 @media screen and (max-width: 600px){
     
         .itemDetailImg {
@@ -547,14 +557,13 @@ h3{
         .itemDetailTexts{
             text-align: center;
         }
+
+        .checkoutProductImg img{
+            width: 100px;
+        }
     }
 
 
- @media screen and (max-width: 991px){
-    .itemDetailTexts{
-        text-align: center;
-    }
- }   
 
  @media screen and (max-width: 280px){
     .itemDetailImg {

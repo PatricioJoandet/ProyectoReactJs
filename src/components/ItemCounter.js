@@ -1,9 +1,8 @@
 import { useState, useContext} from "react";
 import { CartContext } from "../context/CartContext";
-import MyModal from "./MyModal";
 import '../App.css'
 
-const ItemCounter = ({product, stock, setQtySelected, setShowModal, className}) =>{
+const ItemCounter = ({product, stock, setQtySelected, setShowModal, className, addCart}) =>{
     
   const stockAv = stock
   const {addToCart} = useContext(CartContext)   
@@ -37,9 +36,10 @@ const ItemCounter = ({product, stock, setQtySelected, setShowModal, className}) 
         <span className="m-2">{QtyCounter}</span>
         <button onClick={addProduct}>+</button>
 	    </div>
-      <div className="d-flex justify-content-center">
+      {addCart?      <div className="d-flex justify-content-center">
           <button onClick={onAdd}>Agregar al carrito</button>
-      </div>
+      </div> :" "}
+
     </div>
   )
 }
