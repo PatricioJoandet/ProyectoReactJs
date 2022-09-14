@@ -61,19 +61,19 @@ const Checkout = () =>{
     return(
 			<>
 			<Container>
-				<Row>
+				<Row className='checkoutHeader'>
 					<Col>
 						<h1> Mi Carrito</h1>
 					</Col>
 				</Row>
-				<Row>
+				<Row className='checkoutHeader text-end'>
 					<Col>
 					
 					</Col>
 					<Col>
 						<h3>Producto</h3>
 					</Col>
-					<Col>
+					<Col className=''>
 						<h3>Cantidad</h3>
 					</Col>
 					<Col>
@@ -85,7 +85,7 @@ const Checkout = () =>{
 				</Row>
 				<Row className='d-flex flex-column'>
 					{cart.map(product=>
-								<Row key={product.id} className='checkoutItem'>
+								<Row key={product.id} className='pb-1 pt-1 checkoutItem text-end'>
 									<Col className='d-flex'>
 										<Col className='checkoutProductImg'>
 											<img src={product.images[0].resource_url} alt={`Imagen de ${product.title}`}/>
@@ -94,7 +94,7 @@ const Checkout = () =>{
 											<h2>{product.title}</h2>
 											<h3>{product.artists_sort}</h3>
 										</Col>
-										<Col className=''>
+										<Col className='text-end'>
 											<span>{product.QtyCounter}</span>
 											<button onClick={()=>removeFromCart(product.id)}>Borrar</button>
 										</Col>

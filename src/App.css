@@ -360,11 +360,8 @@ h3{
     text-align: center;
 }
 
-.checkoutWrapper{
-    margin: 0 auto;
-    width: 80%;
-    display: grid;
-    grid-template-columns: repeat(6,1fr);
+.checkoutHeader{
+    border-bottom: 1px solid #CCCCCC;
 }
 
 .checkoutHeader h3{
