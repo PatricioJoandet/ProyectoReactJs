@@ -1,19 +1,20 @@
 import '../App.css'
-import { useContext, useState } from "react"
-import { CartContext } from "../context/CartContext"
-import { Link } from 'react-router-dom'
-import MyModal from '../components/MyModal'
-import { collection, addDoc, getFirestore } from 'firebase/firestore/lite'
-import { Button, Container, Row, Col, Form } from 'react-bootstrap'
+import { useContext, useState } from "react";
+import { CartContext } from "../context/CartContext";
+import { Link } from 'react-router-dom';
+import MyModal from '../components/MyModal';
+import { collection, addDoc, getFirestore } from 'firebase/firestore/lite';
+import { Button, Container, Row, Col, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
 const Checkout = () =>{
 
-  const [showModal, setShowModal] = useState(false)
-  const {cart, clear, removeFromCart, total} = useContext(CartContext)
-	const [success, setSuccess] = useState()
+  const [buyModal, setBuyModal] = useState(false);
+	const [clearModal ,setClearModal] = useState(false);
+  const {cart, clear, removeFromCart, total} = useContext(CartContext);
+	const [success, setSuccess] = useState();
 	
 	const [formData, setFormData] = useState({
 		name: '',
@@ -43,10 +44,10 @@ const Checkout = () =>{
 	}
 
 	const pushData = async(newOrder) =>{
-		const database = getFirestore()
-		const collectionOrder = collection(database, "orders")
-		const orderDoc = await addDoc(collectionOrder, newOrder)
-		setSuccess(orderDoc.id)
+		const database = getFirestore();
+		const collectionOrder = collection(database, "orders");
+		const orderDoc = await addDoc(collectionOrder, newOrder);
+		setSuccess(orderDoc.id);
 	}
 
 	if (cart.length===0){ 
@@ -60,9 +61,10 @@ const Checkout = () =>{
     return(
 			<>
 			<Container>
-				<Row className='checkoutHeader'>
-					<Col>
+				<Row className='mt-2 mb-2 checkoutHeader'>
+					<Col className='d-flex'>
 						<h1> Mi Carrito</h1>
+						<Button className='ms-auto mb-1' variant='danger' onClick={()=>{setClearModal(true)}}>Borrar Carrito</Button>
 					</Col>
 				</Row>
 				<Row className='checkoutHeader text-end'>
@@ -110,11 +112,18 @@ const Checkout = () =>{
 				<Row>
 					<div className='checkoutTotalTotal'>
 							<span>Total: {`$ ${total}`}</span>
-							<Button variant='success' onClick={() => setShowModal(true)}>Comprar</Button>
+							<Button variant='success' onClick={() => setBuyModal(true)}>Comprar</Button>
 					</div>
 				</Row>
-				{showModal &&
-						<MyModal title="DATOS DE COMPRA" show={showModal} close={()=>setShowModal()}>
+				{clearModal &&
+					<MyModal title="Vaciar Carrito" show={clearModal} close={()=>setClearModal()}>
+						<h2>¿Desea vaciar el carrito?</h2>
+						<Button className='m-1' variant='danger' onClick={clear}>Vaciar</Button>
+						<Button className='m-1' variant='primary' onClick={()=>setClearModal()}>Cancelar</Button>
+					
+					</MyModal>}
+				{buyModal &&
+						<MyModal title="DATOS DE COMPRA" show={buyModal} close={()=>setBuyModal()}>
 							{success ?(
 								<>
 									<h2>Orden Enviada!</h2>
@@ -137,7 +146,7 @@ const Checkout = () =>{
 										<Form.Control type="email" placeholder='Direccion de Email' name='email' onChange={handleChange} value={formData.email}/>
 									</Form.Group>
 									<Button className={`m-2 ${(formData.name&&formData.phone&&formData.email)===""?"disabled":""}`} variant='success' type="submit"> Enviar Pedido </Button>
-									<Button className='m-2' variant='danger' onClick={()=>setShowModal(false)}>Cancelar</Button>
+									<Button className='m-2' variant='danger' onClick={()=>setBuyModal(false)}>Cancelar</Button>
 								</Form>
 							}
 						</MyModal>
@@ -147,4 +156,4 @@ const Checkout = () =>{
     )}
 }
 
-export default Checkout
+export default Checkout;

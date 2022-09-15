@@ -1,4 +1,4 @@
-📀 # RAPTURE RECORDS 📀
+ # 📀 RAPTURE RECORDS 📀
 
 Ecommerce de venta de albumes musicales creada con fines academicos para el curso de React Js de Coderhouse.
 
@@ -8,13 +8,19 @@ Ecommerce de venta de albumes musicales creada con fines academicos para el curs
 
 
 ## Instalación
+```
+ git clone https://github.com/PatricioJoandet/ProyectoReactJs.git
+ npm install
+ npm start
+```
+## Dependencias y Recursos Utilizados
 
-> git clone https://github.com/PatricioJoandet/ProyectoReactJs.git
-
-## Dependencias
-
-No tiene dependecias extras
+React-Router-Dom
+React-Bootstrap
+React-Spinners
 
 ## Funcionamiento
 
-Actualmente permite visualizar un catalogo de albumes, filtrar por categorias y acceder en detalle a cada producto.
+>Lee productos de una API y los crea en una base de datos. Se puede navegar por distintas categorias, realizar busquedas, ver en detalle productos, agregarlos a un carrito y comprarlos.
+
+Se realizó utilizando la API de Discogs
