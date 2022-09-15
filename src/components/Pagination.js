@@ -1,4 +1,4 @@
-import '../App.css'
+import '../App.css';
 import { Container, Pagination } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -6,7 +6,7 @@ const Paginationn = ({pagination, paginationFetch}) =>{
 
 	return(
 			<Container className=' paginationControls d-flex justify-content-center mb-3 mt-3'>
-				<Pagination>
+				<Pagination onClick={()=>window.scrollTo(0,0)}>
 					<Pagination.First  className={pagination.page===1?"disabled":""} onClick={()=>paginationFetch(pagination.urls.first)} />
 					<Pagination.Prev className={pagination.page===1?"disabled":""} onClick={()=>paginationFetch(pagination.urls.prev)} /> 
 					<Pagination.Item active>{pagination.page}</Pagination.Item>
@@ -17,4 +17,4 @@ const Paginationn = ({pagination, paginationFetch}) =>{
   )
 }
 
-export default Paginationn
+export default Paginationn;

@@ -1,26 +1,26 @@
-import ItemCounter from "./ItemCounter"
-import '../App.css'
-import { useEffect, useState } from 'react'
-import { Link } from "react-router-dom"
-import { Button, Container, Row, Col} from 'react-bootstrap'
+import ItemCounter from "./ItemCounter";
+import '../App.css';
+import { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
+import { Button, Container, Row, Col} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import MyModal from "./MyModal"
+import MyModal from "./MyModal";
 
 const ItemDetail = ({data}) =>{
 
-  const {title, year, community, genres} = data
-  data.price = Math.trunc((community.have - community.want)*.8+2000)
-  let stock = data.num_for_sale
+  const {title, year, community, genres} = data;
+  data.price = Math.trunc((community.have - community.want)*.8+2000);
+  let stock = data.num_for_sale;
     
-  const [qtySelected, setQtySelected] = useState(0)
-	const [selectedImg, setSelectedImg] = useState("")
-	const [showModal, setShowModal] = useState(false)
+  const [qtySelected, setQtySelected] = useState(0);
+	const [selectedImg, setSelectedImg] = useState("");
+	const [showModal, setShowModal] = useState(false);
 	const selectImg = (url) =>{
-		setSelectedImg(url)
+		setSelectedImg(url);
 	}
 
 	useEffect(()=>{
-		setSelectedImg(data.images[0].resource_url)
+		setSelectedImg(data.images[0].resource_url);
 	},[])
 
   return(
@@ -77,25 +77,8 @@ const ItemDetail = ({data}) =>{
 						</div>
 					</div>
 				</Col>
-{/* 				<Col>
-					<div className="mt-4 mb-4 p-3 itemExtraInfo">
-						<div>
-							<details>
-								<summary>INFO</summary>
-									<p>Año: {year}</p>
-									<p>Categorias: {genres}</p>
-							</details>
-						</div>
-						<div>
-							<details>
-								<summary> Tracklist </summary>
-									<p>Tracklist:</p>{data.tracklist.map(track=> <p key={`${track.position}-${track.title}`}>{track.position}-{track.title}</p>)}
-							</details>
-						</div>
-					</div>						
-				</Col> */}
 			</Row>
 		</Container>
 )}
 
-export default ItemDetail
+export default ItemDetail;

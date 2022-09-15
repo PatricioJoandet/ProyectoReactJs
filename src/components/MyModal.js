@@ -1,5 +1,5 @@
-import '../App.css'
-import { Modal} from 'react-bootstrap'
+import '../App.css';
+import { Modal} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MyModal = ({title, close, children, show}) => {
@@ -18,4 +18,4 @@ const MyModal = ({title, close, children, show}) => {
   )
 }
 
-export default MyModal
+export default MyModal;

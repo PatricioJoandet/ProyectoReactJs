@@ -110,7 +110,7 @@ const Checkout = () =>{
 				<Row>
 					<div className='checkoutTotalTotal'>
 							<span>Total: {`$ ${total}`}</span>
-							<button onClick={() => setShowModal(true)}>Comprar</button>
+							<Button variant='success' onClick={() => setShowModal(true)}>Comprar</Button>
 					</div>
 				</Row>
 				{showModal &&
