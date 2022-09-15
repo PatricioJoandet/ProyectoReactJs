@@ -19,6 +19,7 @@ function App() {
             <Route path='/ProyectoReactJs/' element={<Home/>}/>
             <Route path='/productos/:id' element={<ItemDetailContainer/>}/>
             <Route path='/category/:cat' element={<ItemListContainer/>} />
+            <Route path='/search/:searchId' element={<ItemListContainer/>}/>
             <Route path='/cart/' element={<Checkout/>} />
           </Routes>
         </div>

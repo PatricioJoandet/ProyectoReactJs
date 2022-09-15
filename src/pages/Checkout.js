@@ -6,7 +6,6 @@ import MyModal from '../components/MyModal'
 import { collection, addDoc, getFirestore } from 'firebase/firestore/lite'
 import { Button, Container, Row, Col, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemCounter from '../components/ItemCounter'
 
 
 

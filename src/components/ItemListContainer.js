@@ -12,6 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const ItemListContainer = ()=>{
   
   const {cat}=useParams()
+  const {searchId} = useParams()
   const [listProducts, setListProducts] = useState([])
   const [isLoading, setLoading] = useState(true)
   const [pages, setPages] = useState()
@@ -42,9 +43,10 @@ const ItemListContainer = ()=>{
   
   useEffect(() => {
       setLoading(true)
-      const defaultLoad = 'type=release&sort=hot%2Cdesc?';
-      const categoryLoad = `type=release&genre=${cat}`;
-      const fetchApi = fetch(`https://api.discogs.com/database/search?${cat?categoryLoad:defaultLoad}&key=${key}&secret=${secret}`);
+      const defaultLoad = 'type=release&sort=have&sort_order=desc';
+      const categoryLoad = `type=release&genre=${cat}&type=release&sort=have&sort_order=desc`;
+      const searchLoad = `q=${searchId}&type=release&sort=have&sort_order=desc`
+      const fetchApi = fetch(`https://api.discogs.com/database/search?${searchId?searchLoad:(cat?categoryLoad:defaultLoad)}&key=${key}&secret=${secret}`);
 
       fetchData(2000, fetchApi).then(
         res => {
@@ -64,7 +66,7 @@ const ItemListContainer = ()=>{
           }
         }
       ).catch(err =>{console.error("Fetch error: ", err)}) 
-    },[cat])
+    },[cat,searchId])
 
   if (isLoading){
       return <div className='loaderContainer'> <Audio color="#A71D31"/> </div>
